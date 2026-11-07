@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clip · Hand gestures</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h2>Synthetic clip</h2>
+  <p class="muted">A 2-second clip (16 frames) made from your photo: moving camera, motion blur, new room or darkness.
+  Used instead of Step-Video-T2V, which needs about 80 GB of GPU memory. Every frame is classified.</p>
+  <div class="two">
+    <div id="photo"></div>
+    <div class="side">
+      <label class="field">Setting
+        <select id="setting">
+          <option value="handheld">handheld</option>
+          <option value="new_room_pan" selected>new room, panning</option>
+          <option value="low_light_shake">low light, shaking</option>
+          <option value="night_fast">night, fast movement</option>
+        </select>
+      </label>
+      <button id="go" class="primary" disabled>Make clip</button>
+    </div>
+  </div>
+  <div id="out" hidden class="clipout">
+    <video id="video" autoplay loop muted playsinline></video>
+    <svg id="timeline" viewBox="0 0 520 150" role="img" aria-label="Prediction per frame"></svg>
+  </div>
+</main>
+<script src="common.js"></script>
+<script>
+  requireConsent();
+  nav("clip.html");
+  photoWidget((has) => { $("go").disabled = !has; });
+  $("go").onclick = () => busy($("go"), async () => {
+    const r = await post("/api/clip", { setting: $("setting").value });
+    $("video").src = r.video;
+    drawTimeline(r.series, r.classes);
+    $("out").hidden = false;
+  });
+  function drawTimeline(series, classes) {
+    const W = 520, H = 150, L = 80, T = 22, rowH = 36, names = Object.keys(series);
+    const n = series[names[0]].length, x = (i) => L + (i * (W - L - 10)) / (n - 1);
+    const col = ["#1a1a1a", "#b5442b", "#8a8a8a"];
+    let s = "";
+    classes.forEach((c, k) => {
+      const y = T + k * rowH;
+      s += `<text x="0" y="${y + 4}" fill="#6b6b6b">${nice(c)}</text><line x1="${L}" x2="${W - 10}" y1="${y}" y2="${y}" stroke="#e3e3e3"/>`;
+    });
+    names.forEach((name, m) => {
+      const off = (m - 1) * 6, pts = series[name].map((v, i) => `${x(i)},${T + v * rowH + off}`).join(" ");
+      s += `<polyline points="${pts}" fill="none" stroke="${col[m]}" stroke-width="1.3"/>`;
+      series[name].forEach((v, i) => { s += `<circle cx="${x(i)}" cy="${T + v * rowH + off}" r="2.4" fill="${col[m]}"/>`; });
+      s += `<circle cx="${L + m * 130}" cy="${H - 8}" r="3" fill="${col[m]}"/><text x="${L + m * 130 + 8}" y="${H - 4}">${esc(name)}</text>`;
+    });
+    $("timeline").innerHTML = s;
+  }
+</script>
+</body>
+</html>

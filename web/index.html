@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hand gesture recognition</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Hand gesture recognition under changing conditions</h1>
+  <p class="byline">Tokhtamishov Bekhruz · SE-2422 · Computer Vision, Assignment 2 · Astana IT University</p>
+  <p class="lede">Recognises three gestures: <i>thumbs up</i>, <i>peace</i> and <i>stop</i>. Trained on 450 frames of
+  my own hand. Models: DINOv2 (whole image), MediaPipe hand landmarks with my own classifier, SAM 2.1 for the hand mask.</p>
+
+  <section class="consent">
+    <h2>Consent</h2>
+    <ul>
+      <li>The demo needs a photo of a hand. It is processed by Python on <b>this computer</b> and not sent anywhere else.</li>
+      <li>The server does not save the photo and does not use it for training.</li>
+      <li>The browser keeps your last photo in this tab so you can use it on the other pages. It is deleted when you
+        close the tab or press <i>Withdraw consent</i>.</li>
+      <li>Only photograph your own hand, or someone who agreed. Try to keep faces out of the frame.</li>
+      <li>The <i>Stress test</i> and <i>Clip</i> pages make synthetic images from your photo. They are marked
+        <span class="syn">SYNTHETIC</span>.</li>
+    </ul>
+    <label class="check"><input type="checkbox" id="agree"> I have read this and agree.</label>
+    <button id="start" class="primary" disabled>Start</button>
+  </section>
+</main>
+<script src="common.js"></script>
+<script>
+  nav("index.html");
+  $("agree").checked = Consent.get();
+  $("start").disabled = !Consent.get();
+  $("agree").onchange = (e) => { $("start").disabled = !e.target.checked; if (!e.target.checked) Consent.set(false); };
+  $("start").onclick = () => { Consent.set(true); location.href = "recognise.html"; };
+</script>
+</body>
+</html>

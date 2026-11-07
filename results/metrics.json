@@ -1,0 +1,424 @@
+{
+ "per_condition": {
+  "logreg": {
+   "clean": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "low_light": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "overexposed": {
+    "acc": 0.9130434782608695,
+    "precision": 0.9310344827586207,
+    "recall": 0.9130434782608695,
+    "macro_f1": 0.9115384615384615
+   },
+   "motion_blur": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "noise_jpeg": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "rotate_zoom_out": {
+    "acc": 0.6521739130434783,
+    "precision": 0.47333333333333333,
+    "recall": 0.6521739130434783,
+    "macro_f1": 0.5383499170812603
+   },
+   "new_background": {
+    "acc": 0.2608695652173913,
+    "precision": 0.4988304093567251,
+    "recall": 0.2608695652173913,
+    "macro_f1": 0.22511770972952538
+   },
+   "night_combo": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "stress_mean": {
+    "acc": 0.8322981366459627,
+    "macro_f1": 0.810715155478464
+   }
+  },
+  "cnn": {
+   "clean": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "low_light": {
+    "acc": 0.3333333333333333,
+    "precision": 0.1111111111111111,
+    "recall": 0.3333333333333333,
+    "macro_f1": 0.16666666666666666
+   },
+   "overexposed": {
+    "acc": 0.36231884057971014,
+    "precision": 0.6128205128205129,
+    "recall": 0.36231884057971014,
+    "macro_f1": 0.24666666666666667
+   },
+   "motion_blur": {
+    "acc": 0.9855072463768116,
+    "precision": 0.9861111111111112,
+    "recall": 0.9855072463768115,
+    "macro_f1": 0.9855003940110323
+   },
+   "noise_jpeg": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "rotate_zoom_out": {
+    "acc": 0.855072463768116,
+    "precision": 0.8989898989898991,
+    "recall": 0.8550724637681159,
+    "macro_f1": 0.8478835978835978
+   },
+   "new_background": {
+    "acc": 0.4927536231884058,
+    "precision": 0.5706125779565192,
+    "recall": 0.49275362318840576,
+    "macro_f1": 0.4675324675324675
+   },
+   "night_combo": {
+    "acc": 0.3333333333333333,
+    "precision": 0.1111111111111111,
+    "recall": 0.3333333333333333,
+    "macro_f1": 0.16666666666666666
+   },
+   "stress_mean": {
+    "acc": 0.6231884057971014,
+    "macro_f1": 0.554416637061014
+   }
+  },
+  "cnn_env": {
+   "clean": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "low_light": {
+    "acc": 0.855072463768116,
+    "precision": 0.8623262702210072,
+    "recall": 0.8550724637681159,
+    "macro_f1": 0.8530345471521942
+   },
+   "overexposed": {
+    "acc": 0.9420289855072463,
+    "precision": 0.9506172839506174,
+    "recall": 0.9420289855072465,
+    "macro_f1": 0.943030303030303
+   },
+   "motion_blur": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "noise_jpeg": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "rotate_zoom_out": {
+    "acc": 0.9420289855072463,
+    "precision": 0.943030303030303,
+    "recall": 0.9420289855072465,
+    "macro_f1": 0.9416666666666668
+   },
+   "new_background": {
+    "acc": 0.9565217391304348,
+    "precision": 0.9615384615384616,
+    "recall": 0.9565217391304349,
+    "macro_f1": 0.9570329141757714
+   },
+   "night_combo": {
+    "acc": 0.855072463768116,
+    "precision": 0.8658715754904502,
+    "recall": 0.8550724637681159,
+    "macro_f1": 0.8533133533133533
+   },
+   "stress_mean": {
+    "acc": 0.9358178053830227,
+    "macro_f1": 0.9354396834768984
+   }
+  },
+  "dino": {
+   "clean": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "low_light": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "overexposed": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "motion_blur": {
+    "acc": 0.782608695652174,
+    "precision": 0.8495370370370371,
+    "recall": 0.7826086956521738,
+    "macro_f1": 0.7883311603650588
+   },
+   "noise_jpeg": {
+    "acc": 0.9855072463768116,
+    "precision": 0.9861111111111112,
+    "recall": 0.9855072463768115,
+    "macro_f1": 0.9855003940110323
+   },
+   "rotate_zoom_out": {
+    "acc": 0.8985507246376812,
+    "precision": 0.9222222222222222,
+    "recall": 0.8985507246376812,
+    "macro_f1": 0.9009729970677754
+   },
+   "new_background": {
+    "acc": 0.463768115942029,
+    "precision": 0.4611111111111111,
+    "recall": 0.463768115942029,
+    "macro_f1": 0.3722389558232932
+   },
+   "night_combo": {
+    "acc": 0.5942028985507246,
+    "precision": 0.6910919540229884,
+    "recall": 0.5942028985507246,
+    "macro_f1": 0.5811339198435973
+   },
+   "stress_mean": {
+    "acc": 0.8178053830227743,
+    "macro_f1": 0.8040253467301081
+   }
+  },
+  "dino_env": {
+   "clean": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "low_light": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "overexposed": {
+    "acc": 0.9855072463768116,
+    "precision": 0.9861111111111112,
+    "recall": 0.9855072463768115,
+    "macro_f1": 0.9855003940110323
+   },
+   "motion_blur": {
+    "acc": 0.9710144927536232,
+    "precision": 0.9722222222222223,
+    "recall": 0.9710144927536232,
+    "macro_f1": 0.9706640876853642
+   },
+   "noise_jpeg": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "rotate_zoom_out": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "new_background": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "night_combo": {
+    "acc": 0.8260869565217391,
+    "precision": 0.8378226711560045,
+    "recall": 0.8260869565217391,
+    "macro_f1": 0.8285960378983636
+   },
+   "stress_mean": {
+    "acc": 0.9689440993788819,
+    "macro_f1": 0.9692515027992513
+   }
+  },
+  "dino_env_nobg": {
+   "clean": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "low_light": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "overexposed": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "motion_blur": {
+    "acc": 0.9855072463768116,
+    "precision": 0.9861111111111112,
+    "recall": 0.9855072463768115,
+    "macro_f1": 0.9855003940110323
+   },
+   "noise_jpeg": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "rotate_zoom_out": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "new_background": {
+    "acc": 0.4782608695652174,
+    "precision": 0.4632768361581921,
+    "recall": 0.47826086956521735,
+    "macro_f1": 0.3890120719389012
+   },
+   "night_combo": {
+    "acc": 0.8405797101449275,
+    "precision": 0.8442668442668442,
+    "recall": 0.8405797101449274,
+    "macro_f1": 0.8405964405964407
+   },
+   "stress_mean": {
+    "acc": 0.9006211180124224,
+    "macro_f1": 0.8878727009351962
+   }
+  },
+  "dino_env+refine": {
+   "clean": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "low_light": {
+    "acc": 0.9855072463768116,
+    "precision": 0.9861111111111112,
+    "recall": 0.9855072463768115,
+    "macro_f1": 0.9855003940110323
+   },
+   "overexposed": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "motion_blur": {
+    "acc": 0.9710144927536232,
+    "precision": 0.9722222222222223,
+    "recall": 0.9710144927536232,
+    "macro_f1": 0.9706640876853642
+   },
+   "noise_jpeg": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "rotate_zoom_out": {
+    "acc": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "macro_f1": 1.0
+   },
+   "new_background": {
+    "acc": 0.9710144927536232,
+    "precision": 0.9733333333333333,
+    "recall": 0.9710144927536232,
+    "macro_f1": 0.970959595959596
+   },
+   "night_combo": {
+    "acc": 0.7536231884057971,
+    "precision": 0.8268921095008052,
+    "recall": 0.753623188405797,
+    "macro_f1": 0.740462845105439
+   },
+   "stress_mean": {
+    "acc": 0.9544513457556935,
+    "macro_f1": 0.9525124175373473
+   }
+  }
+ },
+ "environment": {
+  "python": "3.12.8",
+  "torch": "2.15.0",
+  "machine": "arm64",
+  "system": "macOS-26.3-arm64-arm-64bit",
+  "device_used": "cpu"
+ },
+ "latency_ms_cpu": {
+  "logreg": 0.06871292000141693,
+  "cnn": 2.004841674988711,
+  "cnn_env": 1.8667749999849548,
+  "dino": 24.907471874985276,
+  "dino_env": 24.218937500018
+ },
+ "hand_focus": {
+  "cnn": {
+   "hand_share": 0.4902027848622073,
+   "hand_area": 0.39711860988451086
+  },
+  "cnn_env": {
+   "hand_share": 0.41592680850484665,
+   "hand_area": 0.39711860988451086
+  },
+  "dino": {
+   "hand_share": 0.3581380455390267,
+   "hand_area": 0.3972642385758651
+  },
+  "dino_env": {
+   "hand_share": 0.3665455397272456,
+   "hand_area": 0.3972642385758651
+  }
+ },
+ "retrieval": {
+  "dino": {
+   "P@1": 1.0,
+   "P@5": 1.0
+  },
+  "dino_env": {
+   "P@1": 1.0,
+   "P@5": 1.0
+  }
+ }
+}

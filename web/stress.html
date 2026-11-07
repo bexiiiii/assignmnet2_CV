@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stress test · Hand gestures</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h2>Stress test</h2>
+  <p class="muted">Your photo under 8 conditions: the original and 7 synthetic changes. Three models answer for each.
+  Red = different from the answer on the clean photo.</p>
+  <div class="two">
+    <div id="photo"></div>
+    <div class="side"><button id="go" class="primary" disabled>Run stress test</button></div>
+  </div>
+  <table class="grid" id="table" hidden>
+    <thead><tr><th></th><th>condition</th><th>A1 CNN</th><th>DINOv2-reg</th><th>Auto</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</main>
+<script src="common.js"></script>
+<script>
+  requireConsent();
+  nav("stress.html");
+  photoWidget((has) => { $("go").disabled = !has; });
+  $("go").onclick = () => busy($("go"), async () => {
+    const r = await post("/api/stress");
+    const truth = r.rows[0].auto[0];
+    const cell = (a) => `<span class="${a[0] !== truth ? "bad" : ""}">${nice(a[0])} ${pct(a[1])}</span>`;
+    $("table").querySelector("tbody").innerHTML = r.rows.map((x) => `
+      <tr><td><img src="${x.img}" alt=""></td><td>${nice(x.condition)}</td>
+      <td>${cell(x.cnn)}</td><td>${cell(x.dino)}</td>
+      <td>${cell(x.auto)} <span class="muted small">${esc(x.auto[2])}</span></td></tr>`).join("");
+    $("table").hidden = false;
+  });
+</script>
+</body>
+</html>

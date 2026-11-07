@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Results · Hand gestures</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h2>Results</h2>
+  <p class="muted">Accuracy (%) on the 69 test frames under each condition. “Final” = DINOv2-reg with environment augmentation.</p>
+  <div class="scroll"><table class="grid num" id="res"></table></div>
+  <figure class="wide"><img src="/figures/acc_by_condition.png" alt="Accuracy per condition"><figcaption>Accuracy per condition.</figcaption></figure>
+  <h3>Synthetic clips</h3>
+  <p class="muted">Share of frames classified correctly (%), 69 clips per setting.</p>
+  <div class="scroll"><table class="grid num" id="clips"></table></div>
+  <figure class="wide"><img src="/figures/clip_strip.png" alt="Clip frames"><figcaption>Frames from the four clip settings.</figcaption></figure>
+</main>
+<script src="common.js"></script>
+<script>
+  nav("results.html");
+  (async () => {
+    const r = await (await fetch("/api/results")).json();
+    const pc = r.metrics.per_condition, conds = Object.keys(pc.cnn).filter((c) => c !== "stress_mean");
+    const names = { logreg: "LogReg (A1)", cnn: "CNN (A1)", cnn_env: "CNN + env-aug", dino: "DINOv2-reg",
+      dino_env: "DINOv2-reg + env-aug (final)", dino_env_nobg: "… without bg swap", "dino_env+refine": "… + refine" };
+    let h = "<tr><th>model</th>" + conds.map((c) => `<th>${nice(c)}</th>`).join("") + "</tr>";
+    for (const [k, v] of Object.entries(pc))
+      h += `<tr class="${k === "dino_env" ? "final" : ""}"><td>${names[k] || esc(k)}</td>` +
+        conds.map((c) => `<td>${(v[c].acc * 100).toFixed(1)}</td>`).join("") + "</tr>";
+    if (r.landmark_metrics) {
+      const L = r.landmark_metrics;
+      h += "<tr><td>Auto (landmarks → DINOv2)</td>" + conds.map((c) => `<td>${(L[c].fused_acc * 100).toFixed(1)}</td>`).join("") + "</tr>";
+      h += "<tr><td class='muted'>hand found, %</td>" + conds.map((c) => `<td class='muted'>${(L[c].detected * 100).toFixed(0)}</td>`).join("") + "</tr>";
+    }
+    $("res").innerHTML = h;
+    const cs = r.clips_metrics.summary, envs = Object.keys(cs.cnn);
+    let t = "<tr><th>model</th>" + envs.map((e) => `<th>${nice(e)}</th>`).join("") + "</tr>";
+    for (const [k, lab] of [["cnn", "CNN (A1)"], ["dino", "DINOv2-reg"], ["dino_env", "DINOv2-reg + env-aug (final)"]])
+      t += `<tr class="${k === "dino_env" ? "final" : ""}"><td>${lab}</td>` + envs.map((e) => `<td>${(cs[k][e].frame_acc * 100).toFixed(1)}</td>`).join("") + "</tr>";
+    $("clips").innerHTML = t;
+  })();
+</script>
+</body>
+</html>

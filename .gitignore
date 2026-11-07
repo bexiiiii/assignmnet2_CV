@@ -1,0 +1,30 @@
+# environment / caches
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.impeccable/
+
+# personal notes and report builder (not part of the submission)
+DEFENCE_RU.md
+COMPLIANCE.md
+VIDEO_SCRIPT.md
+build_report.py
+run_all.sh
+Report_Assignment2_Tokhtamishov.docx
+
+# generated data (rebuilt by src/make_stress_set.py)
+data/
+
+# logs and intermediate files
+*.log
+results/preds.npz
+results/bank_dino.pt
+results/bank_aug_dino_env.pt
+results/per_condition.json
+
+# weights not needed by the app (ablation runs) and downloadable MediaPipe files
+weights/dino.pt
+weights/dino_env_nobg.pt
+weights/cnn_env.pt
+weights/*.task

@@ -1,0 +1,73 @@
+{
+ "clean": {
+  "detected": 0.8260869565217391,
+  "landmark_acc_on_detected": 0.9649122807017544,
+  "landmark_only_acc": 0.7971014492753623,
+  "fused_acc": 0.9710144927536232,
+  "fused_macro_f1": 0.9710076403878439,
+  "dino_env_acc": 1.0
+ },
+ "low_light": {
+  "detected": 0.3188405797101449,
+  "landmark_acc_on_detected": 0.8636363636363636,
+  "landmark_only_acc": 0.2753623188405797,
+  "fused_acc": 0.9565217391304348,
+  "fused_macro_f1": 0.9570329141757714,
+  "dino_env_acc": 1.0
+ },
+ "overexposed": {
+  "detected": 0.4782608695652174,
+  "landmark_acc_on_detected": 0.48484848484848486,
+  "landmark_only_acc": 0.2318840579710145,
+  "fused_acc": 0.7391304347826086,
+  "fused_macro_f1": 0.7221977246670782,
+  "dino_env_acc": 0.9855072463768116
+ },
+ "motion_blur": {
+  "detected": 0.7971014492753623,
+  "landmark_acc_on_detected": 0.8909090909090909,
+  "landmark_only_acc": 0.7101449275362319,
+  "fused_acc": 0.8985507246376812,
+  "fused_macro_f1": 0.8991052058858185,
+  "dino_env_acc": 0.9710144927536232
+ },
+ "noise_jpeg": {
+  "detected": 0.17391304347826086,
+  "landmark_acc_on_detected": 0.6666666666666666,
+  "landmark_only_acc": 0.11594202898550725,
+  "fused_acc": 0.9420289855072463,
+  "fused_macro_f1": 0.9422952933591232,
+  "dino_env_acc": 1.0
+ },
+ "rotate_zoom_out": {
+  "detected": 0.9710144927536232,
+  "landmark_acc_on_detected": 0.7611940298507462,
+  "landmark_only_acc": 0.7391304347826086,
+  "fused_acc": 0.7681159420289855,
+  "fused_macro_f1": 0.7671277997364953,
+  "dino_env_acc": 1.0
+ },
+ "new_background": {
+  "detected": 0.782608695652174,
+  "landmark_acc_on_detected": 0.8148148148148148,
+  "landmark_only_acc": 0.6376811594202898,
+  "fused_acc": 0.855072463768116,
+  "fused_macro_f1": 0.8572538572538573,
+  "dino_env_acc": 1.0
+ },
+ "night_combo": {
+  "detected": 0.014492753623188406,
+  "landmark_acc_on_detected": 1.0,
+  "landmark_only_acc": 0.014492753623188406,
+  "fused_acc": 0.8260869565217391,
+  "fused_macro_f1": 0.8285960378983636,
+  "dino_env_acc": 0.8260869565217391
+ },
+ "stress_mean": {
+  "detected": 0.505175983436853,
+  "landmark_only_acc": 0.38923395445134584,
+  "fused_acc": 0.855072463768116,
+  "fused_macro_f1": 0.8533726904252154,
+  "dino_env_acc": 0.9689440993788819
+ }
+}

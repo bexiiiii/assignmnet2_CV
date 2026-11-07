@@ -1,0 +1,73 @@
+{
+ "n_frames": 16,
+ "fps": 8,
+ "clips_per_env": 69,
+ "summary": {
+  "cnn": {
+   "handheld": {
+    "frame_acc": 1.0,
+    "clip_acc": 1.0,
+    "flips": 0.0
+   },
+   "new_room_pan": {
+    "frame_acc": 0.48188405797101447,
+    "clip_acc": 0.4927536231884058,
+    "flips": 0.8260869565217391
+   },
+   "low_light_shake": {
+    "frame_acc": 0.3333333333333333,
+    "clip_acc": 0.3333333333333333,
+    "flips": 0.0
+   },
+   "night_fast": {
+    "frame_acc": 0.3333333333333333,
+    "clip_acc": 0.3333333333333333,
+    "flips": 0.0
+   }
+  },
+  "dino": {
+   "handheld": {
+    "frame_acc": 1.0,
+    "clip_acc": 1.0,
+    "flips": 0.0
+   },
+   "new_room_pan": {
+    "frame_acc": 0.44565217391304346,
+    "clip_acc": 0.4782608695652174,
+    "flips": 0.8985507246376812
+   },
+   "low_light_shake": {
+    "frame_acc": 0.9827898550724637,
+    "clip_acc": 1.0,
+    "flips": 0.3188405797101449
+   },
+   "night_fast": {
+    "frame_acc": 0.4365942028985507,
+    "clip_acc": 0.43478260869565216,
+    "flips": 4.260869565217392
+   }
+  },
+  "dino_env": {
+   "handheld": {
+    "frame_acc": 0.9990942028985508,
+    "clip_acc": 1.0,
+    "flips": 0.028985507246376812
+   },
+   "new_room_pan": {
+    "frame_acc": 0.9438405797101449,
+    "clip_acc": 0.9855072463768116,
+    "flips": 0.782608695652174
+   },
+   "low_light_shake": {
+    "frame_acc": 0.9972826086956522,
+    "clip_acc": 1.0,
+    "flips": 0.057971014492753624
+   },
+   "night_fast": {
+    "frame_acc": 0.582427536231884,
+    "clip_acc": 0.6231884057971014,
+    "flips": 3.550724637681159
+   }
+  }
+ }
+}

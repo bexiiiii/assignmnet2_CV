@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recognise · Hand gestures</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h2>Recognise</h2>
+  <p class="muted">Hold your hand close to the camera, in the middle of the frame.</p>
+  <div class="two">
+    <div id="photo"></div>
+    <div class="side">
+      <label class="field">Model
+        <select id="engine">
+          <option value="auto">Auto: Google gesture model if sure, else DINOv2</option>
+          <option value="dino">DINOv2-reg, whole image</option>
+          <option value="landmark">Hand landmarks + our MLP</option>
+          <option value="cnn">A1 CNN (baseline)</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="refine"> Brighten and denoise dark photos first (ArtAug-style)</label>
+      <button id="go" class="primary" disabled>Recognise</button>
+      <div id="result" hidden>
+        <p class="answer"><span id="label"></span> <span id="conf" class="muted"></span></p>
+        <table class="probs" id="probs"></table>
+        <p class="meta" id="meta"></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="explain" hidden>
+    <h3>Why this answer</h3>
+    <div class="figs">
+      <figure><img id="f-lm" alt=""><figcaption>(a) Hand landmarks, MediaPipe</figcaption></figure>
+      <figure><img id="f-att" alt=""><figcaption id="cap-att">(b) Attention</figcaption></figure>
+      <figure><img id="f-mask" alt=""><figcaption id="cap-mask">(c) Hand mask, SAM 2.1</figcaption></figure>
+    </div>
+    <p class="small muted" id="nn-cap">Closest training images</p>
+    <div class="nn" id="nn"></div>
+  </div>
+</main>
+<script src="common.js"></script>
+<script>
+  requireConsent();
+  nav("recognise.html");
+  photoWidget((has) => { $("go").disabled = !has; });
+  $("go").onclick = () => busy($("go"), async () => {
+    const r = await post("/api/predict", { engine: $("engine").value, refine_dark: $("refine").checked });
+    $("result").hidden = false;
+    if (!r.probs) {
+      $("label").textContent = "No hand found"; $("conf").textContent = ""; $("probs").textContent = "";
+    } else {
+      $("label").textContent = nice(r.label);
+      $("conf").textContent = pct(r.probs[r.label]);
+      $("probs").innerHTML = CLASSES.map((c) => `<tr><td>${nice(c)}</td>
+        <td><div class="bar ${c === r.label ? "top" : ""}"><span style="width:${(r.probs[c] * 100).toFixed(1)}%"></span></div></td>
+        <td>${pct(r.probs[c])}</td></tr>`).join("");
+    }
+    $("meta").innerHTML = [
+      `model: ${esc(r.used)}${r.fallback ? " (Google's model was not sure)" : ""}`,
+      r.google_note ? esc(r.google_note) : "",
+      `latency: ${r.latency_ms} ms now · ${r.latency_avg_ms} ms average of ${r.latency_n}`,
+      `device: ${esc(r.device)}`, `browser: ${esc(r.browser)}`,
+      r.refine ? `refine: ${esc(r.refine)}` : ""].filter(Boolean).join("<br>");
+    const ex = r.explain;
+    $("explain").hidden = false;
+    $("f-lm").src = ex.landmarks || ex.input;
+    $("f-att").src = ex.attention; $("cap-att").textContent = `(b) ${ex.attention_name}`;
+    $("f-mask").src = ex.mask; $("cap-mask").textContent = `(c) Hand mask, SAM 2.1 (prompt: ${ex.mask_prompt})`;
+    $("nn-cap").textContent = `Closest training images (${r.nn_space})`;
+    $("nn").innerHTML = r.neighbours.map((n) =>
+      `<figure><img src="${n.img}" alt=""><figcaption>${nice(n.label)} ${n.sim.toFixed(2)}</figcaption></figure>`).join("");
+  });
+</script>
+</body>
+</html>
