@@ -7,6 +7,9 @@ DINOv2-reg (classifier), SAM 2.1 (hand masks), MediaPipe Gesture Recognizer and
 Hand Landmarker (Google), a condition simulator and synthetic clips (Step-Video-T2V idea)
 and an ArtAug-style "diagnose -> fix" refine step. Demo: own website with consent.
 
+**Demo video:** https://youtu.be/LHSgJIlm6HE
+**Report:** [Report_Assignment2_Tokhtamishov.pdf](Report_Assignment2_Tokhtamishov.pdf)
+
 ## Layout
 ```
 app.py                 FastAPI server + JSON API (consent checked on every call)
