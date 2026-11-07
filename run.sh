@@ -30,7 +30,7 @@ if [ ! -x "$PY" ]; then
   "$BASE" -m venv .venv
 fi
 STAMP=.venv/.requirements.sha
-NEW=$(shasum requirements.txt | cut -d' ' -f1)
+NEW=$( (shasum requirements.txt 2>/dev/null || sha1sum requirements.txt) | cut -d' ' -f1)
 if [ "$(cat "$STAMP" 2>/dev/null)" != "$NEW" ]; then
   "$PY" -m pip install -q --upgrade pip
   "$PY" -m pip install -q -r requirements.txt
