@@ -102,7 +102,6 @@ You will see:
 |---|---|
 | **Auto** (default) | Google's gesture model if it is sure, otherwise DINOv2. Best for a live webcam |
 | DINOv2-reg | the fine-tuned image model |
-| Hand landmarks + MLP | my small classifier on the 21 hand points |
 | A1 CNN | the baseline from Assignment 1, for comparison |
 
 **Brighten and denoise dark photos first** turns on the ArtAug-style refine step.
